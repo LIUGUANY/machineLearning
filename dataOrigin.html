@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<meta http-equiv="Content-Type" content="text/html;chart=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<meta name="author" content="jz">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/page-style.css">
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jsPlumb-2.2.8.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function () {
+			setLeftMenu();
+			//监听新的连接
+			instance.bind("connection", function (connInfo, originalEvent) {
+				init(connInfo.connection);
+			});
+			instance.bind("click", function (conn, originalEvent) {
+				if (confirm("要删除连接么?")) {
+					instance.detach(conn);
+				}
+			});
+		});
+
+	</script>
+</head>
+<body>
+<article class="pai-container">
+	<!--left-nav-->
+	<nav class="pai-nav">
+		<div class="pai-logo">
+			<span class="pai-logo-icon"></span>
+		</div>
+		<ul class="pai-nav-list">
+			<li>
+				<span class="icon icon-home-1"></span>
+				<span class="text">首页</span>
+			</li>
+			<li>
+				<span class="icon icon-lib-24"></span>
+				<span class="text">实验</span>
+			</li>
+			<li>
+				<span class="icon icon-data-source-24"></span>
+				<span class="text">数据源</span>
+			</li>
+			<li>
+				<span class="icon icon-component-24"></span>
+				<span class="text">组件</span>
+			</li>
+		</ul>
+		<ul class="pai-nav-bottom pai-nav-list">
+			<li class="pai-nav-dropdown pai-nav-account">
+				<span class="icon icon-user-o-24"></span>
+				<span class="text" data-locale="lgyydx">lgyydx</span>
+			</li>
+			<li class="pai-nav-exit">
+				<a href="javascript:void(0)">退出</a>
+			</li>
+		</ul>
+	</nav>
+	<!--/left-nav-->
+	<!--main-->
+	<div class="pai-workspace">
+		<!--left-DropDown-->
+		<aside  id="demo" class="pai-side-left">
+			<section class="pai-toolbox-sec pai-left-menu">
+				<div class="pai-project-list">
+					<div class="pai-project-select">
+						<span class="pai-search-icon"></span>
+						<input class="pai-search-input" type="text" placeholder="搜索">
+					</div>
+				</div>
+				<div id="leftMenu" class="pai-dt-list">
+					<!--<div class="pai-test-box of">
+						<i class="tree-node-expander tree-node-bottom active"></i>
+						<span class="tree-node-label-wrapper-branch ">
+								<span class="tree-node-icon icon-star"></span>
+								<span>
+									我的实验
+								</span>
+							</span>
+					</div>-->
+					<dl class="pai-menu-list" style="margin-bottom: 30px;">
+						<dd>
+							<span class="tree-node-indenter"></span>
+							<span class="element-default">
+									<span class="tree-node-icon"></span>
+									<span class="tree-node-label">Tensorflow图片分类</span>
+								</span>
+						</dd>
+						<dd>
+							<span class="tree-node-indenter"></span>
+							<span class="element-default">
+									<span class="tree-node-icon"></span>
+									<span class="tree-node-label">Tensorflow图片分类</span>
+								</span>
+						</dd>
+						<dd>
+							<span class="tree-node-indenter"></span>
+							<span class="element-default">
+									<span class="tree-node-icon"></span>
+									<span class="tree-node-label">Tensorflow图片分类</span>
+								</span>
+						</dd>
+						<dd>
+							<span class="tree-node-indenter"></span>
+							<span class="element-default">
+									<span class="tree-node-icon"></span>
+									<span class="tree-node-label">Tensorflow图片分类</span>
+								</span>
+						</dd>
+						<dd>
+							<span class="tree-node-indenter"></span>
+							<span class="element-default">
+									<span class="tree-node-icon"></span>
+									<span class="tree-node-label">Tensorflow图片分类</span>
+								</span>
+						</dd>
+					</dl>
+				</div>
+				<div class="pai-btn-create of">
+					<div class="fr mr10">
+						<span class="pai-create-et btn-crate-table">
+							<span class="icon icon-plus-o"></span>
+							<span class="text">创建表</span>
+						</span>
+					</div>
+				</div>
+			</section>
+		</aside>
+		<!--/left-DropDown-->
+		<!--project-region-->
+		<section class="pai-bpmn" >
+			<div class="pai-bpmn-metadata">
+				<div class="pai-bpmn-left">
+						<span class="box">
+							<span class="text">这里是项目名称：这里是实验名称</span>
+							<i class="arrow-down"></i>
+						</span>
+					<ul class="pai-dropdown" style="display: none;">
+						<li class="selected">
+							<span class="icon i-checked"></span>
+							<span class="text-item">【推荐算法】商品推荐_2913</span>
+							<span class="btn-close icon icon-close-l"></span>
+						</li>
+						<li>
+							<span class="icon"></span>
+							<span class="text-item">【推荐算法】商品推荐_2913</span>
+							<span class="btn-close icon icon-close-l"></span>
+						</li>
+					</ul>
+				</div>
+				<div class="pai-bpmn-right" >
+					<ul style="margin-bottom: -7px">
+						<li>
+							<span class="icon icon-group" title="框选节点"></span>
+						</li>
+						<li>
+							<span class="icon icon-zoom-in" title="放大"></span>
+						</li>
+						<li>
+							<span class="icon icon-zoom-out" title="缩小"></span>
+						</li>
+						<li>
+							<span class="icon icon-real-size" title="实际尺寸"></span>
+						</li>
+						<li>
+							<span class="icon icon-fitscreen" title="适应画布"></span>
+						</li>
+						<li>
+							<span class="icon icon-fullscreen" title="全屏"></span>
+						</li>
+						<li class="w_5">
+							<i class="pai-right-line" ></i>
+						</li>
+						<li>
+							<span class="icon icon-operation" title="运行"></span>
+						</li>
+						<li>
+							<span class="icon icon-deploy" title="部署"></span>
+						</li>
+						<li>
+							<span class="icon icon-share" title="分享"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div  class="pai-bpm-paper ">
+				<div id="container" class="pane-scroll">
+
+				</div>
+			</div>
+		</section>
+		<!--/project-region-->
+		<!--right-parameter-->
+		<aside class="pai-side-right">
+			<!--实验属性-->
+			<div class="dms-prop-wrap">
+				<header class="dms-prop-header has-tab">
+					<ul class="dms-prop-tab">
+						<li class="selected">实验属性</li>
+					</ul>
+				</header>
+				<section class="dms-prop-body">
+					<div class="dms-prop-page dms-prop-input">
+						<form>
+							<div class="dms-prop-label">
+								<label>
+									<span class="dms-prop-label-text">项目名称</span>
+									<span class="dms-prop-tooltip" title="lgy">lgy</span>
+								</label>
+							</div>
+							<div class="dms-prop-label mt10">
+								<label>
+									<span class="dms-prop-label-text">创建日期</span>
+									<span class="dms-prop-tooltip">2017-09-19 10:51:09</span>
+								</label>
+							</div>
+							<div class="form-group mt10">
+								<label>名称</label>
+								<input type="text"  placeholder="" class="form-control" >
+							</div>
+							<div class="form-group mt10">
+								<label>名称</label>
+								<div>
+									<textarea class="dms-describe-box" name=""></textarea>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>
+			<!--/实验属性-->
+			<!--表选择-->
+			<div class="dms-prop-wrap" style="display: none;">
+				<header class="dms-prop-header has-tab">
+					<ul class="dms-prop-tab">
+						<li class="selected">参数设置</li>
+						<li>执行调优</li>
+					</ul>
+				</header>
+				<section class="dms-prop-body dms-chart-box">
+					<div class="dms-prop-page">
+						<form>
+							<div class="form-group has-error">
+								<label>表名  <span class="dms-prop-tooltip">跨项目读表: 项目名.表名</span></label>
+								<input type="email" class="form-control">
+								<i class="icon form-close"></i>
+							</div>
+						</form>
+					</div>
+					<div class="dms-prop-page" style="display: none;">
+						<div class="dms-prop-group">
+							<div class="dms-prop-item  dms-prop-item-table">
+								<div class="dms-prop-label">
+									<label>
+										<span class="dms-prop-label-text">源表字段信息</span>
+									</label>
+								</div>
+								<div class="dms-prop-input">
+									<span class="btn-refresh icon icon-refresh"></span>
+									<div class="grid-wrap">
+										<table class="table table-bordered table-hover">
+											<thead>
+											<tr>
+												<th>
+													字段
+												</th>
+												<th>
+													类型
+												</th>
+												<th>
+													前 100 条记录范围
+												</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													age
+												</td>
+												<td>
+													STRING
+												</td>
+												<td>
+													37.0,41.0,63.0,67.0
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!--/表选择-->
+			<!--字段设置-->
+			<div class="dms-prop-wrap" style="display: none;">
+				<header class="dms-prop-header has-tab">
+					<ul class="dms-prop-tab">
+						<li class="selected">字段设置</li>
+					</ul>
+				</header>
+				<section class="dms-prop-body">
+					<div class="dms-prop-page dms-prop-input">
+						<form>
+							<div class="form-group">
+								<label>转换为double类型的列 <span class="dms-prop-tooltip">可选</span></label>
+								<a  class="btn pai-select-field">已选择<span class="number">14</span>个字段</a>
+							</div>
+							<div class="form-group">
+								<label>转换为double异常时默认填充值 <span class="dms-prop-tooltip">可选</span></label>
+								<input type="number" step="1" value="0.0" placeholder="" class="form-control" >
+							</div>
+							<div class="form-group">
+								<label>转换为double类型的列 <span class="dms-prop-tooltip">可选</span></label>
+								<button class="btn">选择<span class="number"></span>字段</button>
+							</div>
+							<div class="form-group">
+								<label>转换为int异常时默认填充值 <span class="dms-prop-tooltip">可选</span></label>
+								<input type="number" step="1" value="0.0" placeholder="" class="form-control" >
+							</div>
+							<div class="form-group">
+								<label>转换为string类型的列 <span class="dms-prop-tooltip">可选</span></label>
+								<button class="btn">已选择<span class="number">3</span>个字段</button>
+							</div>
+							<div class="form-group">
+								<label>转换为String异常是默认填充值 <span class="dms-prop-tooltip">可选</span></label>
+								<input type="text" placeholder="" class="form-control" >
+								<i class="icon form-close"></i>
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>
+			<!--/字段设置-->
+			<!--参数设置-->
+			<div class="dms-prop-wrap" style="display: none">
+				<header class="dms-prop-header has-tab">
+					<ul class="dms-prop-tab">
+						<li class="selected">参数设置</li>
+					</ul>
+				</header>
+				<section class="dms-prop-body">
+					<div class="dms-prop-page">
+						<div class="dms-prop-item  dms-prop-item-r-dataset">
+							<div class="dms-prop-label">
+								<label>输入源</label>
+							</div>
+							<div class="dms-prop-input">
+								<ul>
+									<li>
+										<span>t1</span>
+										<em title='fromName"pai_online_project.heart_disease_prediction-1"'>fromName"pai_online_project.heart_disease_prediction-1"</em>
+									</li>
+									<li>
+										<span>t1</span>
+										<em title='fromName"pai_online_project.heart_disease_prediction-1"'>fromName"pai_online_project.heart_disease_prediction-1"</em>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="dms-prop-item">
+							<div class="dms-prop-label has-long-tooltip">
+								<label>
+									SQL脚本
+									<i>最后一句必须为Select语句</i>
+								</label>
+							</div>
+							<div class="dms-prop-text">
+								<textarea  name=""  cols="30" rows="10"></textarea>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!--/参数设置-->
+			<!--字段(参数)设置-->
+			<div class="dms-prop-wrap" style="display: none;">
+				<header class="dms-prop-header has-tab">
+					<ul class="dms-prop-tab dms-field-tab">
+						<li class="selected">字段设置</li>
+						<li>参数设置</li>
+					</ul>
+				</header>
+				<section class="dms-prop-body dms-field-box">
+					<div class="dms-prop-page dms-prop-input">
+						<form>
+							<div class="form-group">
+								<label>选择特征列 <span class="dms-prop-tooltip">必选</span></label>
+								<a  class="btn pai-select-field">已选择<span class="number">14</span>个字段</a>
+							</div>
+							<div class="form-group">
+								<label>选择目标列 <span class="dms-prop-tooltip">必选</span></label>
+								<input  placeholder="" class="form-control" >
+								<i class="icon dms-target-list"></i>
+							</div>
+							<div class="form-group">
+								<label>枚举类特征 <span class="dms-prop-tooltip">可选</span></label>
+								<button class="btn">选择<span class="number"></span>字段</button>
+							</div>
+							<div class="ui-checkbox">
+								<input class="checkBox" type="checkbox" name="" value="">
+								<span class="checkBox">是k:v,k:v稀疏特征</span>
+							</div>
+						</form>
+					</div>
+					<div class="dms-prop-page" style="display: none;">
+						<div class="dms-prop-page dms-prop-input">
+							<form>
+								<div class="form-group">
+									<label>特征选择方法 <span class="dms-prop-tooltip">可选</span></label>
+									<select class="form-control">
+										<option>IV</option>
+										<option>Gini增益</option>
+										<option>信息增益</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>挑选TopN特征 <span class="dms-prop-tooltip">可选</span></label>
+									<input type="number" step="1" value="0.0" placeholder="" class="form-control" >
+								</div>
+								<div class="form-group">
+									<label>连续特征分区方式</label>
+									<select class="form-control">
+										<option>自动化分区</option>
+										<option>等距离分区</option>
+									</select>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!--/字段(参数)设置-->
+			<!--字段设置，执行调优-->
+			<div class="dms-prop-wrap" style="display: none">
+				<header class="dms-prop-header has-tab">
+					<ul class="dms-prop-tab dms-PerformTuning-tab">
+						<li class="selected">字段设置</li>
+						<li>执行调优</li>
+					</ul>
+				</header>
+				<section class="dms-prop-body dms-PerformTuning-box">
+					<div class="dms-prop-page dms-prop-input">
+						<form>
+							<div class="form-group">
+								<label>默认全选 <span class="dms-prop-tooltip">默认为全选字段</span></label>
+								<a  class="btn pai-select-field">已选择<span class="number">14</span>个字段</a>
+							</div>
+							<div class="ui-checkbox">
+								<input class="checkBox" type="checkbox" name="" value="">
+								<span class="checkBox">保留原始列</span>
+							</div>
+						</form>
+					</div>
+					<div class="dms-prop-page" style="display: none;">
+						<div class="dms-prop-page dms-prop-input">
+							<form>
+								<div class="form-group">
+									<label>计算核心数</label>
+									<input type="email" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>每个核心内存</label>
+									<input type="email" class="form-control">
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!--/字段设置，执行调优-->
+			<!--参数设置，执行调优-->
+			<div class="dms-prop-wrap" style="display: none;">
+				<header class="dms-prop-header has-tab">
+					<ul class="dms-prop-tab dms-argumentTune-tab">
+						<li class="selected">参数设置</li>
+						<li>执行调优</li>
+					</ul>
+				</header>
+				<section class="dms-prop-body dms-argumentTune-box">
+					<div class="dms-prop-page dms-prop-input">
+						<form>
+							<div class="form-group">
+								<label>拆分方式</label>
+								<select class="form-control">
+									<option>按比例拆分</option>
+									<option>按阈值拆分</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>切分比例<span class="dms-prop-tooltip">表1占原数据的比例,范围 (0, 1)</span></label>
+								<input type="number" step="1" value="0.3" min="0" max="1" placeholder="" class="form-control" >
+							</div>
+							<div class="form-group">
+								<label>随机数种子<span class="dms-prop-tooltip">正整数</span></label>
+								<input type="number" step="1" value="2" placeholder="" class="form-control" >
+							</div>
+							<div class="ui-checkbox">
+								<input class="checkBox" type="checkbox" name="" value="">
+								<span class="checkBox">高级选项</span>
+							</div>
+						</form>
+					</div>
+					<div class="dms-prop-page" style="display: none;">
+						<div class="dms-prop-page dms-prop-input">
+							<form>
+								<div class="form-group">
+									<label>计算核心数</label>
+									<input type="email" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>每个核心内存</label>
+									<input type="email" class="form-control">
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!--/参数设置，执行调优-->
+			<!--字段设置，参数设置，执行调优-->
+			<div class="dms-prop-wrap" style="display: none;">
+				<header class="dms-prop-header has-tab">
+					<ul class="dms-prop-tab dms-setTuning-tab">
+						<li class="selected">字段设置</li>
+						<li>参数设置</li>
+						<li>执行调优</li>
+					</ul>
+				</header>
+				<section class="dms-prop-body dms-setTuning-box">
+					<div class="dms-prop-page dms-prop-input">
+						<form>
+							<div class="form-group">
+								<label>训练特征列 <span class="dms-prop-tooltip">必选 支持Double/Int类型字段</span></label>
+								<a  class="btn pai-select-field">已选择<span class="number">13</span>个字段</a>
+							</div>
+							<div class="form-group">
+								<label>目标列 <span class="dms-prop-tooltip">必选</span></label>
+								<input  placeholder="" class="form-control" >
+								<i class="icon dms-target-list"></i>
+							</div>
+							<div class="form-group">
+								<label>正类值 <span class="dms-prop-tooltip">必选 eg. 0/1分类中1是正类</span></label>
+								<input  placeholder="" class="form-control" >
+							</div>
+							<div class="ui-checkbox">
+								<input class="checkBox" type="checkbox" name="" value="">
+								<span class="checkBox">是k:v,k:v稀疏特征</span>
+							</div>
+						</form>
+					</div>
+					<div class="dms-prop-page" style="display: none">
+						<form>
+							<div class="form-group">
+								<label>正则项<span class="dms-prop-tooltip">可选</span></label>
+								<select class="form-control">
+									<option>按比例拆分</option>
+									<option>按阈值拆分</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>最大迭代次数<span class="dms-prop-tooltip">可选</span></label>
+								<input type="number" step="1" value="100" min="0" placeholder="" class="form-control" >
+							</div>
+							<div class="form-group">
+								<label>正则系数<span class="dms-prop-tooltip">可选 正则类型为None时此值无效</span></label>
+								<input type="number" step="0.1" value="2" placeholder="" class="form-control" >
+							</div>
+							<div class="form-group">
+								<label>最小收敛误差</label>
+								<input type="number" step="0.01" value="0.000001" placeholder="" class="form-control" >
+							</div>
+						</form>
+					</div>
+					<div class="dms-prop-page" style="display: none;">
+						<div class="dms-prop-page dms-prop-input">
+							<form>
+								<div class="form-group">
+									<label>核数目</label>
+									<input type="number"  step="1" value="" placeholder="默认自动调整" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>每个核的内存大小(MB)</label>
+									<input type="number"  step="1" value="" placeholder="默认自动调整" class="form-control" >
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!--/字段设置，参数设置，执行调优-->
+		</aside>
+		<!--/right-parameter-->
+	</div>
+	<!--/main-->
+</article>
+<!--弹窗-->
+<!--创建表-->
+<div class="modal createTable-box fade" tabindex="-1" role="dialog" style="z-index: 1112">
+	<div class="modal-dialog modal-w" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">创建表</h4>
+			</div>
+			<div class="modal-body h450">
+
+				<div class="wrap of mt20">
+					<div class="right_wrap">
+						<header class="wrap-header">
+							<ul class="selected-tab" style="left:2px">
+								<li class="selected">表结构</li>
+								<li>数据</li></ul>
+						</header>
+						<section class="wrap-content">
+							<div class="dms-prop-page selected-list is-overflow">
+								<div>
+									<div class="has-error">
+										<label style="font-weight: 400">
+											表名
+											<span class="form-item-tips name-tip">表不存在, 请先设计表结构</span>
+										</label>
+										<div class="form-group pr">
+											<input type="text" class="form-control w230" value="" placeholder="请输入表名">
+											<label  class="form-control-error icon-close-c" >请输入表名</label>
+										</div>
+									</div>
+									<div class="form-group table-schema-editor">
+										<label for="tableLifecycle">保存时长</label>
+										<div class="input-group">
+											<input class="form-control" id="tableLifecycle" step="1" min="0" value="180" name="lifecycle" type="number">
+											<div class="input-group-addon">天</div>
+										</div>
+									</div>
+									<div class="form-group table-schema-editor flex-grow-1">
+										<label>
+											表结构
+											<span class="ml10" style="color:#289de9">点击 + 添加一项</span>
+											<span class="btn-add icon-plus-o"></span>
+										</label>
+										<div class="flex-grow-1">
+											<div class="flex-grow-inner schema-wrap">
+												<table class="table table-bordered">
+													<thead><tr><th>列名</th><th>类型</th><th>是否分区字段</th><th></th></tr></thead>
+													<tbody>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="dms-prop-page selected-raw" style="display: none">
+								<div class="form-group">
+									<p class="attention-text">注意：上传的数据将追加搭到原表, 请上传 .txt 或 .csv 文件</p>
+								</div>
+								<div class="form-group pr">
+									<div class="btn btn-upload btn-block btn-primary">选择文件</div>
+									<input class="form-control fill-hide" name="content" id="dataFile" type="file">
+								</div>
+								<div class="row delimiter">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>行分隔符（只能是 \r，\n 或 \r\n）</label>
+											<input class="form-control" value="\n" name="rowDelimiter"  aria-invalid="false" type="text">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>列分隔符</label>
+											<input class="form-control" value="," maxlength="1" name="columnDelimiter" aria-invalid="false" type="text">
+										</div>
+									</div>
+								</div>
+								<div class="form-group data-show">
+									<label>数据预览<span class="file-name">test.txt</span><span class="data-tips">只显示前一百条数据</span></label>
+									<div class="flex-grow-1">
+										<div class="flex-grow-inner preview-wrap">
+											<div class="table-wrap">
+												<table class="table table-bordered table-striped table-hover">
+													<tbody>
+														<tr>
+															<td>1</td>
+															<td>2</td>
+															<td>3</td>
+															<td>4</td>
+															<td>5</td>
+															<td>5</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">确定</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/创建表-->
+<!--选择字段-->
+<div class="modal createPortGroup-box fade" tabindex="-1" role="dialog" style="z-index: 1112">
+	<div class="modal-dialog modal-w" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">选择字段</h4>
+			</div>
+			<div class="modal-body h450">
+				<form class="modal-form">
+					<div class="form-group pr">
+						<input type="text" class="form-control w230" value="" placeholder="输入关键字搜索列，包含关键字即可">
+						<i class="pai-input-search"></i>
+					</div>
+				</form>
+				<div class="wrap of mt20">
+					<div class="left_wrap">
+						<div class="of">
+							<header class="wrap-header">
+								<div class="ui-checkbox">
+									<input class="checkBox" type="checkbox" name="" value="">
+									<span class="checkBox">全选</span>
+								</div>
+							</header>
+							<section class="wrap-content">
+								<ul class="zero-accordion">
+									<li>
+										<div class="zero-accordion-title active">
+											<a class="J-btn-arrow icon-arrow-down-l"></a>
+											<span>
+													STRING
+												</span>
+										</div>
+									</li>
+									<li class="zero-accordion-item">
+										<div class="ui-checkbox">
+											<input class="checkBox" type="checkbox" name="" value="">
+											<span class="checkBox">trestbps</span>
+										</div>
+									</li>
+									<li class="zero-accordion-item">
+										<div class="ui-checkbox">
+											<input class="checkBox" type="checkbox" name="" value="">
+											<span class="checkBox">trestbps</span>
+										</div>
+									</li>
+									<li class="zero-accordion-item">
+										<div class="ui-checkbox">
+											<input class="checkBox" type="checkbox" name="" value="">
+											<span class="checkBox">trestbps</span>
+										</div>
+									</li>
+									<li class="zero-accordion-item">
+										<div class="ui-checkbox">
+											<input class="checkBox" type="checkbox" name="" value="">
+											<span class="checkBox">trestbps</span>
+										</div>
+									</li>
+									<li class="zero-accordion-item">
+										<div class="ui-checkbox">
+											<input class="checkBox" type="checkbox" name="" value="">
+											<span class="checkBox">trestbps</span>
+										</div>
+									</li>
+								</ul>
+							</section>
+						</div>
+					</div>
+					<div class="right_wrap">
+						<header class="wrap-header">
+							已选
+							<ul class="selected-tab">
+								<li class="selected">列表</li>
+								<li>编辑</li></ul>
+						</header>
+						<section class="wrap-content">
+							<div class="dms-prop-page selected-list is-overflow">
+								<div class="table-header">
+									<table class="table table-bordered">
+										<thead>
+										<tr>
+											<th><span class="icon icon-delete btn-delete"></span></th>
+											<th>字段</th>
+											<th>类型</th>
+										</tr>
+										</thead>
+									</table>
+								</div>
+								<div class="table-body">
+									<table class="table table-bordered table-hover">
+										<tbody>
+										<tr>
+											<td>
+												<span class="icon icon-delete btn-delete"></span>
+											</td>
+											<td>sex</td>
+											<td>STRING</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="icon icon-delete btn-delete"></span>
+											</td>
+											<td>sex</td>
+											<td>STRING</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="dms-prop-page selected-raw" style="display: none">
+								<textarea class="form-control txtRaw"></textarea>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">确定</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/选择字段-->
+<!--选择目标列-->
+<div class="modal targetListBox fade" tabindex="-1" role="dialog" style="z-index: 1112">
+	<div class="modal-dialog modal-w" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">选择目标列</h4>
+			</div>
+			<div class="modal-body h450">
+				<form class="modal-form">
+					<div class="form-group pr">
+						<input type="text" class="form-control w230" value="" placeholder="输入关键字搜索列，包含关键字即可">
+						<i class="pai-input-search"></i>
+					</div>
+				</form>
+				<div class="wrap of mt20">
+					<div class="left_wrap">
+						<div class="of">
+							<header class="wrap-header">
+								<div>
+									<span class="checkBox">全选</span>
+								</div>
+							</header>
+							<section class="wrap-content">
+								<ul class="zero-accordion">
+									<li>
+										<div class="zero-accordion-title active">
+											<a class="J-btn-arrow icon-arrow-down-l"></a>
+											<span>
+													BIGINT
+												</span>
+										</div>
+									</li>
+									<li class="zero-accordion-item">
+										<div class="ui-radiobox">
+											<input class="radioBox" type="radio" name="" value="">
+											<span class="radioBox">trestbps</span>
+										</div>
+									</li>
+								</ul>
+								<ul class="zero-accordion">
+									<li>
+										<div class="zero-accordion-title active">
+											<a class="J-btn-arrow icon-arrow-down-l"></a>
+											<span>
+													STRING
+												</span>
+										</div>
+									</li>
+									<li class="zero-accordion-item">
+										<div class="ui-radiobox">
+											<input class="radioBox" type="radio" name="" value="">
+											<span class="radioBox">trestbps</span>
+										</div>
+									</li>
+								</ul>
+							</section>
+						</div>
+					</div>
+					<div class="right_wrap">
+						<header class="wrap-header">
+							已选
+							<ul class="selected-tab">
+								<li class="selected">列表</li>
+								<li>编辑</li>
+							</ul>
+						</header>
+						<section class="wrap-content wrap-right-wrap">
+							<div class="dms-prop-page selected-list">
+								<div class="table-header">
+									<table class="table table-bordered">
+										<thead>
+										<tr>
+											<th><span class="icon icon-delete btn-delete"></span></th>
+											<th>字段</th>
+											<th>类型</th>
+										</tr>
+										</thead>
+									</table>
+								</div>
+								<div class="table-body">
+									<table class="table table-bordered table-hover">
+										<tbody>
+										<tr>
+											<td>
+												<span class="icon icon-delete btn-delete"></span>
+											</td>
+											<td>sex</td>
+											<td>STRING</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="icon icon-delete btn-delete"></span>
+											</td>
+											<td>sex</td>
+											<td>STRING</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="dms-prop-page selected-raw" style="display: none">
+								<textarea class="form-control txtRaw"></textarea>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">确定</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/选择目标列-->
+<!--复制实验-->
+<div class="modal copy-test-box fade" tabindex="-1" role="dialog" style="z-index: 1112">
+	<div class="modal-dialog modal-w" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">复制实验</h4>
+			</div>
+			<div class="modal-body">
+				<form class="modal-form">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">名称</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" maxlength="33" placeholder="请输入实验名称">
+						</div>
+					</div>
+					<div class="form-group mt5">
+						<label class="col-sm-2 control-label">项目</label>
+						<div class="col-sm-10">
+							<select class="form-control">
+								<option>1</option>
+								<option>2</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group mt10">
+						<label class="col-sm-2 control-label">描述</label>
+						<div class="col-sm-10">
+							<textarea class="form-control" maxlength="33" placeholder="请输入描述文本"></textarea>
+						</div>
+					</div>
+					<div class="form-group mt10">
+						<label class="col-sm-2 control-label">位置</label>
+						<div class="col-sm-10 tree-wrap">
+							<div class="tree-node-selector">
+								<table class="tree-wrapper table table-hover">
+									<tbody>
+									<tr class="tree-node selected">
+										<td>
+											<span class="tree-node-expander icon icon-arrow-right"></span>
+											<span class="tree-node-label-wrapper-branch ">
+													<span class="tree-node-icon icon-star"></span>
+													<span class="tree-node-label">我的实验</span>
+												</span>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<span class="icon icon-add-folder button-add-folder"></span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">确定</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/复制实验-->
+<!--新建文件夹-->
+<div class="modal new-folder-box fade" tabindex="-1" role="dialog" style="z-index: 1112">
+	<div class="modal-dialog modal-w" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">新建文件夹</h4>
+			</div>
+			<div class="modal-body">
+				<form class="modal-form">
+					<div class="form-group">
+						<input type="text" class="form-control" maxlength="33" placeholder="请输入文件夹名称">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">确定</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/新建文件夹-->
+<!--重命名-->
+<div class="modal rename-box fade" tabindex="-1" role="dialog" style="z-index: 1112">
+	<div class="modal-dialog modal-w" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">新建文件夹</h4>
+			</div>
+			<div class="modal-body">
+				<form class="modal-form">
+					<div class="form-group">
+						<input type="text" class="form-control" maxlength="33" placeholder="请输入文件夹名称">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">确定</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/重命名-->
+<!--/弹窗-->
+<!--我的实验(右键)-->
+<div class="ui-context-menu-layer"  style="display: none">
+	<ul class="ui-context-menu">
+		<li class="ui-context-menu-item">
+			<i class="icon icon-test"></i>
+			<span class="item-name">打开实验</span>
+		</li>
+		<li class="ui-context-menu-item separator" role="menuItem"></li>
+		<li class="ui-context-menu-item copy-test">
+			<span class="item-name">复制</span>
+		</li>
+		<li class="ui-context-menu-item">
+			<i class="icon icon-rename"></i>
+			<span class="item-name">重命名</span>
+		</li>
+		<li class="ui-context-menu-item">
+			<i class="icon icon-del"></i>
+			<span class="item-name">删除</span>
+		</li>
+		<li class="ui-context-menu-item separator" role="menuItem"></li>
+		<li class="ui-context-menu-item">
+			<span class="item-name">评估对比</span>
+		</li>
+	</ul>
+</div>
+<!--/我的实验(右键)-->
+<!--我的实验工作区(右键)-->
+<div class="ui-workarea-menu-layer"  style="display: none">
+	<ul class="ui-context-menu">
+		<li class="ui-context-menu-item btn-rename">
+			<i class="icon icon-rename"></i>
+			<span class="item-name">重命名</span>
+		</li>
+		<li class="ui-context-menu-item removeElement">
+			<i class="icon icon-del"></i>
+			<span class="item-name">删除</span>
+		</li>
+		<li class="ui-context-menu-item">
+			<span class="item-name icon-copy">复制</span>
+		</li>
+		<li class="ui-context-menu-item">
+			<i class="icon icon-test"></i>
+			<span class="item-name">添加注释</span>
+		</li>
+		<li class="ui-context-menu-item separator" role="menuItem"></li>
+		<li class="ui-context-menu-item btn-execute-begin">
+			<i class="icon icon-execute-begin"></i>
+			<span class="item-name">从此处开始执行</span>
+		</li>
+		<li class="ui-context-menu-item">
+			<i class="icon icon-execute-end"></i>
+			<span class="item-name">执行到此处</span>
+		</li>
+		<li class="ui-context-menu-item">
+			<i class="icon icon-execute-node"></i>
+			<span class="item-name">执行该节点</span>
+		</li>
+		<li class="ui-context-menu-item separator" role="menuItem"></li>
+		<li class="ui-context-menu-item btn-view-data">
+			<i class="icon icon-check-data"></i>
+			<span class="item-name">查看数据</span>
+		</li>
+	</ul>
+</div>
+<!--/我的实验工作区(右键)-->
+
+<script>
+	/*弹窗*/
+	function popBox(a, b, c) {
+		$("." + a).on("click", function () {
+			$('.' + b).modal('show');
+			$("." + b).css({
+				"display": "table",
+				"height": "100%",
+				"width": c + "px",
+				"left": "50%",
+				"margin-left": "-" + c / 2 + "px"
+			})
+			$("." + b + " .modal-w").width(c + "px");
+			/*step初始化*/
+			//创建主机
+			if(a=="createHost"||a=="nfs-share"||a=="cifs-share"||a=="ftp-share"){
+				init();
+			}
+		})
+	}
+	//选择字段
+	popBox("pai-select-field","createPortGroup-box","880");
+	//选择目标列
+	popBox("dms-target-list","targetListBox","880");
+	//复制实验
+	popBox("copy-test","copy-test-box","400");
+	//新建文件夹
+	popBox("button-add-folder","new-folder-box","400");
+	//创建表
+	popBox("btn-crate-table","createTable-box","600");
+	//创建表(初始化)
+	$(".btn-crate-table").on("click",function(){
+		$(".createTable-box .selected-tab li").removeClass("selected").first().addClass("selected");
+		$(".createTable-box .dms-prop-page").hide().first().show();
+
+	})
+	/*我的实验(左侧右键点击)*/
+	function test(a,b){
+		var $itemName = $("."+a+" dd"),
+			style = $("."+b)[0].style;
+		$itemName.on("contextmenu",function(event){
+			var event = event || window.event;
+			style.display = "block";
+			style.top = event.clientY+"px";
+			style.left = event.clientX + "px";
+			return false;
+		});
+		$("."+b+" .ui-context-menu-item").on("click",function(){
+			style.display = "none";
+		})
+	}
+	//左导航右键菜单
+	test("pai-left-menu","ui-context-menu-layer");
+	/*创建表(添加,删除表结构)*/
+	function addTable(){
+		//获取添加按钮，tbody
+		var $addBtn = $(".btn-add");
+		var $tbody = $(".btn-add").parents(".table-schema-editor").find("tbody");
+		//追加表结构
+		$addBtn.on("click",function(){
+			$tbody.append('<tr><td><input class="form-control"  name="columnName" placeholder="请输入列名" type="text"></td><td><label class="select-hacker"><select name="columnType" class="form-control field-type"><option value="bigint" selected="">bigint</option><option value="double">double</option><option value="decimal">decimal</option></select></label></td><td class="pr"><div class="ui-checkbox"><input class="checkBox" type="checkbox" ><span class="checkBox"></span></div></td><td><span class="btn-delete icon-close-o"></span></td></tr>')
+			/*//隐藏tfoot
+			$addBtn.parents(".table-schema-editor").find("tfoot").hide()*/
+			//删除表结构
+			var $delBtn = $(".btn-delete")
+			$delBtn.on("click",function(){
+				$(this).parents("tr").remove();
+
+			})
+		})
+	}
+	addTable();
+</script>
+</body>
+</html>

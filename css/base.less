@@ -1,0 +1,213 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,menu,dl,dt,dd,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{border: 0;padding: 0;margin: 0;}
+body{font:12px/150% "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei","PingFang SC", "Hiragino Sans GB", "Heiti SC",  "WenQuanYi Micro Hei", sans-serif;;word-break:break-all;word-wrap:break-word;}
+html{box-sizing: border-box;-moz-box-sizing: border-box;-ms-box-sizing: border-box;-webkit-box-sizing: border-box;-o-box-sizing: border-box;}
+ul,ol,li{list-style: none;}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+a:focus{outline: none;-moz-outline: none;}
+a:active{outline: none;}
+a,img{border:0 none}@charset "utf-8";
+
+input,select,button{outline: none;vertical-align: middle;}
+table{border-spacing: 0;border-collapse: collapse;empty-cells: show;}
+.font(@size,@line-size){
+    font-size: @size;
+    line-height: @line-size;    
+}
+h1{.font(36px,45px)}
+h2{.font(24px,30px)}
+h3{.font(18px,22px)}
+h4{.font(16px,20px)}
+h5{.font(14px,18px)}
+h6{.font(12px,16px)}
+
+em,i,b{font-style: normal;font-weight: normal;}
+article,aside,details,figcaption,footer,section,nav,header,menu,hgroup,figure{display: block;}
+.clearfix:after{content:'.';display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix{display: inline-block;}
+*html .clearfix{height: 1%;}
+.Clearfix{display: block;}
+.clear{font-size: 0;clear: both;height: 1px;line-height: 1px;margin-top: -1px;}
+.dis{display: block;}
+.fl{float: left;}
+.fr{float: right;}
+.pa{position: absolute;}
+.pr{position: relative;}
+
+@f: "Hiragino Sans GB","Microsoft YaHei","宋体";
+.f-fm,tt,select,input,samp{font-family:@f;}
+.f-fh{font-family:@f;}
+.f-fg{font-family: "georgia";}
+
+@no:none;
+.unbg{background:@no!important;}
+.unbr{border:@no!important;}
+
+.unfw{font-weight: normal;}
+.of{overflow: hidden;}
+.ov{overflow: visible;}
+.vam{vertical-align: middle;}
+.tal{text-align: left;}
+.tac{text-align: center;}
+.tar{text-align: right;}
+.hand{cursor: pointer;}
+.zoom{_zoom:1}
+
+.fs(@fsi){
+    font-size: @fsi;
+}
+.fsize12{
+    .fs(12px)
+}
+.fsize14{
+    .fs(14px)
+}
+.fsize16{
+    .fs(16px)
+}
+.fsize18{
+    .fs(18px)
+}
+.fsize20{
+    .fs(20px)
+}
+.fsize22{
+    .fs(22px)
+}
+.fsize24{
+    .fs(24px);
+    line-height: 24px;
+}
+.fsize30{
+    .fs(30px);
+    line-height: 30px;
+}
+.fsize46{
+    .fs(46px)
+}
+.td(@td){
+    text-indent: @td;
+}
+.tD24{
+    .td(24px)
+}
+.tD30{
+    .td(30px)
+}
+.mt(@mt){
+    margin-top: @mt;
+}
+.mr(@mr){
+    margin-right: @mr;
+}
+.mb(@mb){
+    margin-bottom: @mb;
+}
+.ml(@ml){
+    margin-left: @ml;
+}
+
+.mt5{.mt(@mt:5px)}
+.mt10{.mt(@mt:10px)}
+.mt15{.mt(@mt:15px)}
+.mt20{.mt(@mt:20px)}
+.mt30{.mt(@mt:30px)}
+.mt40{.mt(@mt:40px)}
+.mt50{.mt(@mt:50px)}
+
+.mr5{.mr(@mr:5px)}
+.mr10{.mr(@mr:10px)}
+.mr15{.mr(@mr:15px)}
+.mr20{.mr(@mr:20px)}
+.mr30{.mr(@mr:30px)}
+.mr40{.mr(@mr:40px)}
+.mr50{.mr(@mr:50px)}
+
+.mb5{.mb(@mb:5px)}
+.mb10{.mb(@mb:10px)}
+.mb15{.mb(@mb:15px)}
+.mb20{.mb(@mb:20px)}
+.mb30{.mb(@mb:30px)}
+.mb40{.mb(@mb:40px)}
+.mb50{.mb(@mb:50px)}
+
+.ml5{.ml(@ml:5px)}
+.ml10{.ml(@ml:10px)}
+.ml15{.ml(@ml:15px)}
+.ml20{.ml(@ml:20px)}
+.ml30{.ml(@ml:30px)}
+.ml40{.ml(@ml:40px)}
+.ml50{.ml(@ml:50px)}
+
+.pt(@pt){
+    padding-top: @pt;
+}
+.pr(@pr){
+    padding-right: @pr;
+}
+.pb(@pb){
+    padding-bottom: @pb;
+}
+.pl(@pl){
+    padding-left: @pl;
+}
+.pt5{.pt(@pt:5px)}
+.pt10{.pt(@pt:10px)}
+.pt15{.pt(@pt:15px)}
+.pt20{.pt(@pt:20px)}
+.pt30{.pt(@pt:30px)}
+.pt40{.pt(@pt:40px)}
+.pt50{.pt(@pt:50px)}
+
+.pr5{.pr(@pr:5px)}
+.pr10{.pr(@pr:10px)}
+.pr15{.pr(@pr:15px)}
+.pr20{.pr(@pr:20px)}
+.pr30{.pr(@pr:30px)}
+.pr40{.pr(@pr:40px)}
+.pr50{.pr(@pr:50px)}
+
+.pb5{.pb(@pb:5px)}
+.pb10{.pb(@pb:10px)}
+.pb15{.pb(@pb:15px)}
+.pb20{.pb(@pb:20px)}
+.pb30{.pb(@pb:30px)}
+.pb40{.pb(@pb:40px)}
+.pb50{.pb(@pb:50px)}
+
+.pl5{.pl(@pl:5px)}
+.pl10{.pl(@pl:10px)}
+.pl15{.pl(@pl:15px)}
+.pl20{.pl(@pl:20px)}
+.pl30{.pl(@pl:30px)}
+.pl40{.pl(@pl:40px)}
+.pl50{.pl(@pl:50px)}
+
+.w50pre{widows: 50%;}
+
+.width(@wid;@mar:0 auto){
+    width:@wid;
+    margin:@mar;
+}
+.w365{
+    .width(365px)
+}
+.w785{
+    .width(785px)
+}
+.w670{
+    .width(670px)
+}
+.w620{
+    .width(620px)
+}
+.w535{
+    .width(535px)
+}
+.w1200{
+    .width(1200px)
+}
+.hlh20{height: 20px;line-height: 20px;}
+.hlh30{height: 30px;line-height: 30px;}
+.lh{line-height: 24px;}
+.txtOf{display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}

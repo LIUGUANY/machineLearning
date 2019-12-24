@@ -1,0 +1,32 @@
+$baseFontSize: 75; //默认基准font-size
+@function px2rem($px) {
+    @return $px / $baseFontSize * 1rem;
+}
+
+@mixin size ($width,$height) {
+    width: $width / $baseFontSize * 1rem;
+    height: $height / $baseFontSize * 1rem;
+}
+@mixin margin ($top,$right,$bottom,$left) {
+    margin:$top / $baseFontSize * 1rem $right / $baseFontSize * 1rem $bottom / $baseFontSize * 1rem $left / $baseFontSize * 1rem;
+}
+
+@mixin imgRetina($image, $extension, $width, $height, $position: center, $repeat: no-repeat) {
+    background: url($image + '.' + $extension) $repeat $position;
+    @media
+    screen and (-webkit-min-device-pixel-ratio: 2),
+    screen and (   min--moz-device-pixel-ratio: 2),
+    screen and (   -moz-min-device-pixel-ratio: 2),
+    screen and (     -o-min-device-pixel-ratio: 2/1),
+    screen and (        min-device-pixel-ratio: 2),
+    screen and (             min-resolution: 192dpi),
+    screen and (             min-resolution: 2dppx) {
+       background: url($image + '@2x' + '.' + $extension) $repeat $position;
+       background-size: px2rem($width) px2rem($height);
+    }
+}
+@mixin text-ellipsis () {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

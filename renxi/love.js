@@ -57,7 +57,7 @@
         // y = 13 cos t - 5 cos 2t - 2 cos 3t - cos 4t
         // http://www.wolframalpha.com/input/?i=x+%3D+16+sin%5E3+t%2C+y+%3D+(13+cos+t+-+5+cos+2t+-+2+cos+3t+-+cos+4t)
         var points = [], x, y, t;
-        for (var i = 10; i < 30; i += 0.2) {
+        for (var i = 10; i < 30; i += 1) {
             t = i / Math.PI;
             x = 16 * Math.pow(Math.sin(t), 3);
             y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
@@ -163,13 +163,13 @@
             ctx.scale(scale, scale);
             ctx.moveTo(0, 0);
     	    ctx.lineTo(15, 15);
-    	    ctx.lineTo(60, 15);
+    	    ctx.lineTo(50, 15);
             ctx.stroke();
 
             ctx.moveTo(0, 0);
             ctx.scale(0.75, 0.75);
-            ctx.font = "12px 微软雅黑,Verdana";
-	    ctx.fillText(" [***]", 23, 10);
+            ctx.font = "24px 微软雅黑,Verdana";
+	    ctx.fillText(" [点我]", 23, 10);
             ctx.restore();
         },
         clear: function() {
@@ -210,7 +210,6 @@
     	    ctx.lineTo(-len, 0);
             ctx.stroke();
             ctx.restore();
-
             if (this.length < this.width) {
                 this.length += this.speed;
             }

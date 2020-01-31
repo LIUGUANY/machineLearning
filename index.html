@@ -72,6 +72,7 @@
 	var height = canvas.height();
 	canvas.attr("width", width);
 	canvas.attr("height", height);
+	$('#love_day').html(new.Date().setFullYear(2018, (3 - 1), (15 - 1)));
 	var opts = {
 		seed: {
 			x: width / 2 - 20,
@@ -178,7 +179,7 @@
 		together.setMilliseconds(0);
 		$("#code").show().typewriter();
 		$("#clock-box").fadeIn(500);
-		$('#love_day').html(888)
+		
 		while (true) {
 			timeElapse(together);
 			$await(Jscex.Async.sleep(1000));

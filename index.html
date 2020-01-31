@@ -72,6 +72,16 @@
 	var height = canvas.height();
 	canvas.attr("width", width);
 	canvas.attr("height", height);
+	var date = new Date();
+	date.setFullYear(2018, (3 - 1), (15 - 1));
+	date.setHours(22);
+	date.setMinutes(22);
+	date.setSeconds(0);
+	date.setMilliseconds(0);
+	var current = Date();
+	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	var days = Math.floor(seconds / (3600 * 24));
+	$('#love_day').html(days)
 	var opts = {
 		seed: {
 			x: width / 2 - 20,
